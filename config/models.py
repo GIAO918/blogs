@@ -20,7 +20,8 @@ class Link(models.Model):
 
     class Meta:
         verbose_name = verbose_name_plural = "友链"
-
+    def __str__(self):
+        return self.name
 
 class SideBar(models.Model):
     STATUS_SHOW = 1
@@ -44,6 +45,9 @@ class SideBar(models.Model):
                                          verbose_name="状态")
     owner = models.ForeignKey(User, verbose_name="作者", on_delete=None)
     created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = verbose_name_plural = "侧边栏"

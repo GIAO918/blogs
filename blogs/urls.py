@@ -16,8 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
-from blog import views
+from blog.views import post_list,post_detail
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r"^register",views.register)
+    # url(r'^$',post_list),
+    url(r'^category/(?P<category_id>\d+)/$',post_list),
+    url(r'^tag/(?P<tag_id>\d+)/$',post_list),
+    url(r'^post/(?P<post_id>\d+).html$',post_detail),
+    # url(r'^links/$',link),
+    # url(r'^super_admin/',admin.site.urls),
+    # url(r'^admin/',custom_stie.urls),
 ]
