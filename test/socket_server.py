@@ -15,7 +15,7 @@ response = "\r\n".join(response_params)
 
 
 def handle_connection(conn, addr):
-    print("oh,new conn",conn,addr)
+    print("oh,new conn", conn, addr)
     import time
     time.sleep(10)
     request = b""
@@ -31,7 +31,7 @@ def main():
     socket.SOCK_STREAM
     serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     serversocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    serversocket.bind(("127.0.0.1",8000))
+    serversocket.bind(("127.0.0.1", 8000))
     serversocket.listen(5)
     print("http://127.0.0.1:8000")
 

@@ -1,16 +1,34 @@
 from django.shortcuts import render, HttpResponse
-
+from .models import Tag, Post, Category
 from django import forms
 from django.forms import widgets
 from blog import models
 from django.core.validators import RegexValidator, ValidationError  # 用于forms正则校验
 
-def post_list(request,category_id = None,tag_id = None):
-    content = "post_list category_id ={category_id},tag_id = {tag_id}".format(category_id = category_id,tag_id = tag_id)
-    return  HttpResponse(content)
 
-def post_detail(request,post_id):
-    return HttpResponse("detail")
+def post_list(request, category_id=None, tag_id=None):
+    if tag_id:
+        try:
+            tag = Tag.objects.get(id=tag_id)
+        except Tag.DoesNotExist:  # get查询单一结果，不存在会抛出的异常类型
+            post_list = []
+        else:
+            post_list = tag.post_set.filter(status=Post.STATUS_NORMAL)
+
+    else:
+        post_list = Post.objects.filter(status=Post.STATUS_NORMAL)
+        if category_id:
+            post_list = post_list.filter(category_id=category_id)
+    return render(request, 'list.html', context={"post_list": post_list})
+
+
+def post_detail(request, post_id):
+    try:
+        print(post_id)
+        post = Post.objects.get(id=post_id)
+    except Post.DoesNotExist:
+        post = None
+    return render(request, "detail.html", context={"post": post})
 
 # Create your views here.
 
@@ -75,4 +93,3 @@ def post_detail(request,post_id):
 #             return HttpResponse("注册成功")
 #         print(reg_obj.errors)
 #     return render(request, "register.html", {"reg_obj": reg_obj})
-
