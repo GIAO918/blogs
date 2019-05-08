@@ -19,7 +19,7 @@ from django.conf.urls import url
 from blog.views import post_list,post_detail
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # url(r'^$',post_list),
+    url(r'^$',post_list),
     url(r'^category/(?P<category_id>\d+)/$',post_list),
     url(r'^tag/(?P<tag_id>\d+)/$',post_list),
     url(r'^post/(?P<post_id>\d+)$',post_detail),
