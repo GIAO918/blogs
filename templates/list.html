@@ -11,6 +11,14 @@
     {% endfor %}
 
 </div>
+<div>
+    侧边栏展示:
+    {% for siderbar in siderbars %}
+        <h4>{{ siderbar.title }}</h4>
+        {{ siderbar.content }}
+    {% endfor %}
+
+</div>
 {% if tag %}
 标签页:{{ tag.name }}
 {% endif %}

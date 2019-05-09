@@ -5,6 +5,7 @@ from django.forms import widgets
 from blog import models
 from django.core.validators import RegexValidator, ValidationError  # 用于forms正则校验
 
+from config.models import SideBar
 
 def post_list(request, category_id=None, tag_id=None):
     tag = None
@@ -20,9 +21,9 @@ def post_list(request, category_id=None, tag_id=None):
         "category": category,
         "tag": tag,
         "post_list": post_list,
+        "siderbars":SideBar.get_all(),
     }
     context.update(Category.get_navs())
-    print(context)
     return render(request, 'list.html', context=context)
 
 
@@ -33,6 +34,7 @@ def post_detail(request, post_id):
         post = None
     context = {
         "post":post,
+        "siderbars": SideBar.get_all(),
     }
     context.update(Category.get_navs())
     return render(request, "detail.html", context = context)
