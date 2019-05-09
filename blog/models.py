@@ -15,6 +15,32 @@ class Category(models.Model):
     owner = models.ForeignKey(User, verbose_name="作者", on_delete=None)
     created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
 
+    @classmethod
+    def get_navs(cls):
+
+        # categories = cls.objects.filter(status=cls.STATUS_NORMAL)
+        # nav_categories = categories.filter(is_nav=True)
+        # normal_categories = categories.filter(is_nav=False)
+        # return {
+        #     "nav":nav_categories,
+        #     "categories":normal_categories,
+        # }
+
+        categories = cls.objects.filter(status=cls.STATUS_NORMAL)  # 查询到所有状态正常的分类的对象
+        nav_categories = []
+        normal_categories = []
+        # for 遍历所有的分类对象，把导航的分类和正常的分类加入不同的列表
+        for cate in categories:
+            if cate.is_nav:
+                nav_categories.append(cate)
+            else:
+                normal_categories.append(cate)
+
+        return {
+            "navs": nav_categories,         # 导航的分类
+            "categories": normal_categories,
+        }
+
     class Meta:
         verbose_name = verbose_name_plural = "分类"
 
@@ -92,5 +118,6 @@ class Post(models.Model):
         return post_list, category
 
     @classmethod
-    def latset_posts(cls):
+    def latest_posts(cls):
         queryset = cls.objects.filter(status=cls.STATUS_NORMAL)
+        return queryset
