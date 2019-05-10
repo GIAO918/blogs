@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.template.loader import render_to_string
 
 # Create your models here.
 
@@ -26,6 +26,10 @@ class Link(models.Model):
 
 
 class SideBar(models.Model):
+    DISPLAY_HTML = 1
+    DISPLAY_LATEST = 2
+    DISPLAY_HOT = 3
+    DISPLAY_COMMENT = 4
     STATUS_SHOW = 1
     STATUS_HIDE = 0
     STATUS_ITEMS = (
@@ -47,6 +51,34 @@ class SideBar(models.Model):
                                          verbose_name="状态")
     owner = models.ForeignKey(User, verbose_name="作者", on_delete=None)
     created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
+
+    @property
+    def content_html(self):
+        """直接渲染模板"""
+        from blog.models import Post
+        from comment.models import Comment
+
+        result = ""
+        if self.display_type == self.DISPLAY_HTML:
+            result = self.content
+        elif self.display_type == self.DISPLAY_LATEST:
+            context = {
+                "posts":Post.latest_posts()
+            }
+            result = render_to_string("/block/sidebar_posts.html",context)
+        elif self.display_type == self.DISPLAY_HOT:
+            context = {
+                "Posts":Post.hot_posts()
+            }
+            result = render_to_string("config/bloc/sidebar_posts.html",context)
+        elif self.display_type == self.DISPLAY_COMMENT:
+            context = {
+                "comments":Comment.objects.filter(status=Comment.STATUS_NORMAL)
+            }
+            result = render_to_string("config/block/sidebar_comments.html",context)
+        return result
+
+
 
     @classmethod
     def get_all(cls):

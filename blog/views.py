@@ -7,6 +7,7 @@ from django.core.validators import RegexValidator, ValidationError  # 用于form
 
 from config.models import SideBar
 
+
 def post_list(request, category_id=None, tag_id=None):
     tag = None
     category = None
@@ -21,23 +22,34 @@ def post_list(request, category_id=None, tag_id=None):
         "category": category,
         "tag": tag,
         "post_list": post_list,
-        "siderbars":SideBar.get_all(),
+        "siderbars": SideBar.get_all(),
     }
     context.update(Category.get_navs())
     return render(request, 'list.html', context=context)
 
 
-def post_detail(request, post_id):
-    try:
-        post = Post.objects.get(id=post_id)
-    except Post.DoesNotExist:
-        post = None
-    context = {
-        "post":post,
-        "siderbars": SideBar.get_all(),
-    }
-    context.update(Category.get_navs())
-    return render(request, "detail.html", context = context)
+# def post_detail(request, post_id):
+# try:
+#     post = Post.objects.get(id=post_id)
+# except Post.DoesNotExist:
+#     post = None
+# context = {
+#     "post":post,
+#     "siderbars": SideBar.get_all(),
+# }
+# context.update(Category.get_navs())
+# return render(request, "detail.html", context = context)
+from django.views.generic import DetailView, ListView
+
+
+# class PostDetailView(DetailView):
+#     model = Post
+#     template_name = "detail.html"
+
+class PostDetailView(DetailView):
+    model = Post    # 获取哪一个model的单个对象
+    template_name = "post_list.html"        # 渲染的模型
+    pk_url_kwarg = 1
 
 # Create your views here.
 

@@ -87,6 +87,8 @@ class Post(models.Model):
     owner = models.ForeignKey(User, verbose_name="作者", on_delete=None)
     created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
 
+    pv = models.PositiveIntegerField(default=1)
+    uv = models.PositiveIntegerField(default=1)
     def __str__(self):
         return self.desc
 
