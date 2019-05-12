@@ -3,7 +3,6 @@ from .models import Tag, Post, Category
 from django import forms
 from django.forms import widgets
 from blog import models
-from django.core.validators import RegexValidator, ValidationError  # 用于forms正则校验
 
 from config.models import SideBar
 
@@ -28,23 +27,9 @@ def post_list(request, category_id=None, tag_id=None):
     return render(request, 'list.html', context=context)
 
 
-# def post_detail(request, post_id):
-# try:
-#     post = Post.objects.get(id=post_id)
-# except Post.DoesNotExist:
-#     post = None
-# context = {
-#     "post":post,
-#     "siderbars": SideBar.get_all(),
-# }
-# context.update(Category.get_navs())
-# return render(request, "detail.html", context = context)
+
 from django.views.generic import DetailView, ListView
 
-
-# class PostDetailView(DetailView):
-#     model = Post
-#     template_name = "detail.html"
 
 class PostDetailView(DetailView):
     model = Post    # 获取哪一个model的单个对象
