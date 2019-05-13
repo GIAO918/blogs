@@ -16,17 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
-from blog.views import post_list, PostDetailView
+from blog.views import PostDetailView, ListView
+# from blog.views import post_list, link
 from blog import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^$', post_list),
-    url(r"post_list",PostDetailView.as_view),
 
-    url(r'^category/(?P<category_id>\d+)/$', post_list, name="category-list"),
-    url(r'^tag/(?P<tag_id>\d+)/$', post_list, name="tag-list"),
-    url(r'^post/(?P<post_id>\d+)$', PostDetailView.as_view(), name="post-detail"),
-    # url(r'^links/$',link),
-    # url(r'^super_admin/',admin.site.urls),
-    # url(r'^admin/',custom_stie.urls),
+#     url(r'^$', post_list),
+#     url(r"post_list", PostDetailView.as_view()),
+#
+#     url(r'^category/(?P<category_id>\d+)/$', post_list, name="category-list"),
+#     url(r'^tag/(?P<tag_id>\d+)/$', post_list, name="tag-list"),
+#     url(r'^post/(?P<pk>\d+)$', PostDetailView.as_view(), name="post-detail"),
+#     url(r'^links/$', link),
+#     url(r'^super_admin/', admin.site.urls),
+#     # url(r'^admin/', custom_stie.urls),
 ]
