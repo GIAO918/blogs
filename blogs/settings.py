@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'blog.apps.App01Config',
     'config',
     'comment',
+    "blogs",
 
 ]
 # 内置的中间件
