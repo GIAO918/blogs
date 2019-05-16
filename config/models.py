@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.template.loader import render_to_string
 
+
 # Create your models here.
 
 class Link(models.Model):
@@ -30,12 +31,6 @@ class SideBar(models.Model):
     DISPLAY_LATEST = 2
     DISPLAY_HOT = 3
     DISPLAY_COMMENT = 4
-    STATUS_SHOW = 1
-    STATUS_HIDE = 0
-    STATUS_ITEMS = (
-        (STATUS_SHOW, "展示"),
-        (STATUS_HIDE, "隐藏"),
-    )
     SIDE_TYPE = (
         (1, "HTML"),
         (2, "最新文章"),
@@ -47,7 +42,7 @@ class SideBar(models.Model):
                                                verbose_name="展示类型")
     content = models.CharField(max_length=500, blank=True, verbose_name="内容",
                                help_text="如果设置的不是html类型，可为空")
-    status = models.PositiveIntegerField(default=STATUS_SHOW, choices=STATUS_ITEMS,
+    status = models.PositiveIntegerField(default=DISPLAY_HTML,
                                          verbose_name="状态")
     owner = models.ForeignKey(User, verbose_name="作者", on_delete=None)
     created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
@@ -55,7 +50,7 @@ class SideBar(models.Model):
     @property
     def content_html(self):
         """直接渲染模板"""
-        from blog.models import Post
+        from blog.models import Post  # 避免循环引用
         from comment.models import Comment
 
         result = ""
@@ -63,26 +58,24 @@ class SideBar(models.Model):
             result = self.content
         elif self.display_type == self.DISPLAY_LATEST:
             context = {
-                "posts":Post.latest_posts()
+                "posts": Post.latest_posts()
             }
-            result = render_to_string("/block/sidebar_posts.html",context)
+            result = render_to_string("config/blocks/sidebar_posts.html", context)
         elif self.display_type == self.DISPLAY_HOT:
             context = {
-                "Posts":Post.hot_posts()
+                "Posts": Post.hot_posts()
             }
-            result = render_to_string("config/bloc/sidebar_posts.html",context)
+            result = render_to_string("config/blocks/sidebar_posts.html", context)
         elif self.display_type == self.DISPLAY_COMMENT:
             context = {
-                "comments":Comment.objects.filter(status=Comment.STATUS_NORMAL)
+                "comments": Comment.objects.filter(status=Comment.STATUS_NORMAL)
             }
-            result = render_to_string("config/block/sidebar_comments.html",context)
+            result = render_to_string("config/blocks/sidebar_comments.html", context)
         return result
-
-
 
     @classmethod
     def get_all(cls):
-        return cls.objects.filter(status=cls.STATUS_SHOW)
+        return cls.objects.filter()
 
     def __str__(self):
         return self.title
