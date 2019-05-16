@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="453f5ac2-0877-4a93-b559-50579a2696b8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blogs/templates/blog/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blogs/templates/config/blocks/sidebar_comments.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blogs/templates/config/blocks/sidebar_posts.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blogs/templates/blog/demo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogs/custom_site.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogs/custom_site.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogs/templates/blog/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogs/templates/blog/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogs/templates/blog/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogs/templates/blog/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogs/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogs/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/models.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +100,7 @@
           <entry key="config_link" value="1" />
           <entry key="config_sidebar" value="3" />
           <entry key="css" value="4" />
-          <entry key="html" value="42" />
+          <entry key="html" value="43" />
           <entry key="js" value="4" />
           <entry key="py" value="156" />
           <entry key="sql" value="1" />
@@ -124,7 +115,7 @@
         <counts>
           <entry key="CSS" value="4" />
           <entry key="Database Element" value="43" />
-          <entry key="HTML" value="42" />
+          <entry key="HTML" value="43" />
           <entry key="JavaScript" value="4" />
           <entry key="PLAIN_TEXT" value="14" />
           <entry key="Python" value="156" />
@@ -134,7 +125,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="cell_2" value="81" />
-          <entry key="html" value="3587" />
+          <entry key="html" value="4026" />
           <entry key="py" value="20023" />
           <entry key="txt" value="5" />
           <entry key="博客记录1" value="134" />
@@ -144,7 +135,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="3587" />
+          <entry key="HTML" value="4026" />
           <entry key="PLAIN_TEXT" value="495" />
           <entry key="Python" value="20023" />
           <entry key="Scratch" value="81" />
@@ -153,7 +144,26 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/blogs/templates/blog/demo.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="265">
+              <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -215,6 +225,7 @@
         <option value="$PROJECT_DIR$/blogs/templates/blog/list.html" />
         <option value="$PROJECT_DIR$/blog/views.py" />
         <option value="$PROJECT_DIR$/blogs/templates/blog/base.html" />
+        <option value="$PROJECT_DIR$/blogs/templates/blog/demo.html" />
       </list>
     </option>
   </component>
@@ -549,6 +560,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22121535" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -619,13 +631,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="das://fbe23b06-5ae1-47f0-976d-a3f843d949a0/schema/blogs/table/auth_user_user_permissions">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://fbe23b06-5ae1-47f0-976d-a3f843d949a0/schema/blogs/table/blog_post_tag">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -898,6 +903,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-235">
           <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blogs/templates/blog/demo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
