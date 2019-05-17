@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from .models import Tag, Post, Category
 from django.views.generic import DetailView, ListView
+from django.db.models import Q
 from config.models import SideBar
 from django import forms
 from django.forms import widgets
@@ -10,15 +11,22 @@ from blog import models
 from config.models import SideBar
 
 
+class MyView(DetailView):
+    model = Post
+    template_name = "blog/test.html"
+
+
+
 class IndexView(ListView):
     queryset = Post.latest_posts()  # 获取最新的文章对象
     paginate_by = 5
-    context_object_name = "post_list"   # 要渲染到模板的queryset名称
+    context_object_name = "post_list"  # 要渲染到模板的queryset名称
     template_name = "blog/list.html"
 
 
+
 class CategoryView(IndexView):
-    def get_context_data(self, **kwargs):   # 拿到渲染到模板的数据
+    def get_context_data(self, **kwargs):  # 拿到渲染到模板的数据
         context = super().get_context_data(**kwargs)
         category_id = self.kwargs.get("category_id")
         category = get_object_or_404(Category, pk=category_id)
