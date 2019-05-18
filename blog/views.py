@@ -11,12 +11,6 @@ from blog import models
 from config.models import SideBar
 
 
-class MyView(DetailView):
-    model = Post
-    template_name = "blog/test.html"
-
-
-
 class IndexView(ListView):
     queryset = Post.latest_posts()  # 获取最新的文章对象
     paginate_by = 5
@@ -26,7 +20,7 @@ class IndexView(ListView):
 
 
 class CategoryView(IndexView):
-    def get_context_data(self, **kwargs):  # 拿到渲染到模板的数据
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         category_id = self.kwargs.get("category_id")
         category = get_object_or_404(Category, pk=category_id)
@@ -42,24 +36,6 @@ class CategoryView(IndexView):
         return queryset.filter(category_id=category_id)
 
 
-# def post_list(request, category_id=None, tag_id=None):
-#     tag = None
-#     category = None
-#
-#     if tag_id:
-#         post_list, tag = Post.get_by_tag(tag_id)
-#     elif category_id:
-#         post_list, category = Post.get_by_category(category_id)
-#     else:
-#         post_list = Post.latest_posts()
-#     context = {
-#         "category": category,
-#         "tag": tag,
-#         "post_list": post_list,
-#         "sidebars": SideBar.get_all()
-#     }
-#     context.update(Category.get_navs())
-#     return render(request, "blog/list.html", context=context)
 class TagView(IndexView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -82,14 +58,5 @@ class PostDetailView(DetailView):  # 类方法获取文章对象
     template_name = "blog/detail.html"
     context_object_name = "post"
     pk_url_kwarg = "post_id"
-# def post_detail(request, post_id=None):
-#     try:
-#         post = Post.objects.get(id=post_id)
-#     except Post.DoesNotExist:
-#         post = None
-#     context = {
-#         "post": post,
-#         "sidebars": SideBar.get_all(),
-#     }
-#     context.update(Category.get_navs())
-#     return render(request, "blog/detail.html", context=context)
+
+https://blog.csdn.net/chen_jint/article/details/15505949
